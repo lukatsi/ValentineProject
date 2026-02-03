@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<title>Valentine Minion 💛</title>
+<style>
+    body {
+
+        font-family: Arial, sans-serif;
+        background: #fff3f6;
+        display: flex;
+        justify-content: center; /* შუაში ჰორიზონტალურად */
+        align-items: center;     /* შუაში ვერტიკალურად */
+        height: 100vh;           /* მთლიან ეკრანზე */
+        margin: 0;
+        overflow: hidden;
+        flex-direction: column;
+    }
+
+    h1 {
+        color: #d6336c;
+        margin-bottom: 20px;
+    }
+
+    img {
+        width: 220px;
+        margin-bottom: 20px;
+    }
+
+    button {
+        padding: 12px 24px;
+        font-size: 18px;
+        margin: 10px;
+        cursor: pointer;
+        border: none;
+        border-radius: 8px;
+        transition: transform 0.3s;
+    }
+
+    #yesBtn {
+        background: #ff4d6d;
+        color: white;
+    }
+
+    #noBtn {
+        background: #adb5bd;
+        color: white;
+    }
+
+    .heart {
+        position: fixed;
+        top: -20px;
+        font-size: 24px;
+        animation: fall 3s linear forwards;
+    }
+
+    @keyframes fall {
+        to {
+            transform: translateY(100vh);
+            opacity: 0;
+        }
+    }
+</style>
+</head>
+<body> <img src="images/minion.png" alt="Minion" style="width:220px; margin-bottom:20px;">
+
+
+<h1>გახდები ჩემი ვალენტინი? 💝</h1>
+<img src="minion.png" alt="Minion">
+
+<div>
+    <button id="yesBtn">კი</button>
+    <button id="noBtn">არა</button>
+</div>
+
+<script>
+    let scale = 1;
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+
+    noBtn.onclick = () => {
+        scale += 0.2;
+        yesBtn.style.transform = `scale(${scale})`;
+    };
+
+    yesBtn.onclick = () => {
+        for (let i = 0; i < 30; i++) {
+            createHeart();
+        }
+    };
+
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.animationDuration = (2 + Math.random() * 2) + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 4000);
+    }
+</script>
+
+</body>
+</html>
